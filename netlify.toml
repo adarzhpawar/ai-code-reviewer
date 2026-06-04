@@ -1,0 +1,24 @@
+[build]
+# Build command runs both frontend build and prepares backend
+command = "npm run build:all"
+# Publish directory is the frontend build output
+publish = "frontend/dist"
+# Functions directory for backend APIs
+functions = "backend/.netlify/functions"
+
+[[redirects]]
+# Route all /api requests to backend functions
+from = "/api/*"
+to = "/.netlify/functions/server:*"
+status = 200
+force = false
+
+[[redirects]]
+# SPA fallback - route all unmatched routes to index.html
+from = "/*"
+to = "/index.html"
+status = 200
+
+[context.production.environment]
+# Production environment variables
+NODE_ENV = "production"

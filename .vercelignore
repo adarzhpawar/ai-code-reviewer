@@ -1,0 +1,15 @@
+.git
+.gitignore
+*.md
+node_modules
+.env
+.DS_Store
+*.log
+.next
+out
+build
+dist
+.vercel
+.vercelignore
+coverage
+.jest

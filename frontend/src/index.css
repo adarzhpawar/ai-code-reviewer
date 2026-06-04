@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #000000;
+  color: #FFFFFF;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #A3FF12; }
+
+/* Terminal cursor blink */
+.terminal-cursor::after {
+  content: '▊';
+  color: #A3FF12;
+  animation: type-cursor 0.8s step-end infinite;
+}
+
+/* Card base */
+.terminal-card {
+  background: #111111;
+  border: 1px solid #222222;
+  transition: all 0.2s ease;
+}
+.terminal-card:hover {
+  border-color: #A3FF12;
+  box-shadow: 0 0 15px rgba(163, 255, 18, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Button - terminal style */
+.terminal-btn {
+  background: #000;
+  border: 1px solid #A3FF12;
+  color: #A3FF12;
+  transition: all 0.2s ease;
+}
+.terminal-btn:hover {
+  background: #A3FF12;
+  color: #000;
+  box-shadow: 0 0 20px rgba(163, 255, 18, 0.3);
+}
+.terminal-btn:active {
+  transform: scale(0.97);
+}
+.terminal-btn:disabled {
+  border-color: #222;
+  color: #333;
+  cursor: not-allowed;
+}
+.terminal-btn:disabled:hover {
+  background: #000;
+  color: #333;
+  box-shadow: none;
+}
+
+/* Progress bar */
+.lime-progress {
+  background: #A3FF12;
+  box-shadow: 0 0 10px rgba(163, 255, 18, 0.5);
+}
+
+/* Gradient text - lime */
+.gradient-text {
+  background: linear-gradient(135deg, #A3FF12, #7DFF00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Neon border */
+.neon-border {
+  border: 1px solid #A3FF12;
+  box-shadow: 0 0 10px rgba(163, 255, 18, 0.15), inset 0 0 10px rgba(163, 255, 18, 0.05);
+}
+
+/* Scan line effect */
+.scan-line {
+  position: relative;
+  overflow: hidden;
+}
+.scan-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(163, 255, 18, 0.3), transparent);
+  animation: scan-line 3s linear infinite;
+}
+
+/* Monaco Editor overrides - terminal theme */
+.monaco-editor {
+  --vscode-editor-background: #000000 !important;
+  --vscode-editorGutter-background: #0A0A0A !important;
+  --vscode-editorLineNumber-foreground: #333 !important;
+  --vscode-editorCursor-foreground: #A3FF12 !important;
+  --vscode-editor-selectionBackground: rgba(163, 255, 18, 0.15) !important;
+  --vscode-editorWidget-background: #111 !important;
+  --vscode-editorWidget-border: #222 !important;
+}
+
+.monaco-editor .margin {
+  background: #0A0A0A !important;
+}
+
+.monaco-editor .monaco-hover {
+  background: #111 !important;
+  border: 1px solid #A3FF12 !important;
+  box-shadow: 0 0 15px rgba(163, 255, 18, 0.1) !important;
+  border-radius: 4px !important;
+}
+
+/* Line decorations - black/lime */
+.line-decoration-critical {
+  background: rgba(163, 255, 18, 0.08) !important;
+  border-left: 2px solid #A3FF12 !important;
+}
+.line-decoration-warning {
+  background: rgba(163, 255, 18, 0.04) !important;
+  border-left: 2px solid rgba(163, 255, 18, 0.4) !important;
+}
+.line-decoration-suggestion {
+  background: rgba(163, 255, 18, 0.02) !important;
+  border-left: 2px solid rgba(163, 255, 18, 0.2) !important;
+}
+
+.glyph-margin-critical {
+  background: #A3FF12;
+  border-radius: 50%;
+  width: 6px !important;
+  height: 6px !important;
+  margin-left: 7px;
+  margin-top: 7px;
+  box-shadow: 0 0 6px rgba(163, 255, 18, 0.6);
+}
+.glyph-margin-warning {
+  background: rgba(163, 255, 18, 0.6);
+  border-radius: 50%;
+  width: 6px !important;
+  height: 6px !important;
+  margin-left: 7px;
+  margin-top: 7px;
+}
+.glyph-margin-suggestion {
+  background: rgba(163, 255, 18, 0.3);
+  border-radius: 50%;
+  width: 6px !important;
+  height: 6px !important;
+  margin-left: 7px;
+  margin-top: 7px;
+}
+
+/* Diff editor */
+.monaco-diff-editor .diffOverview { background: #0A0A0A !important; }
+.monaco-diff-editor .char-insert { background: rgba(163, 255, 18, 0.15) !important; }
+.monaco-diff-editor .char-delete { background: rgba(255, 80, 80, 0.15) !important; }
+.monaco-diff-editor .line-insert { background: rgba(163, 255, 18, 0.08) !important; }
+.monaco-diff-editor .line-delete { background: rgba(255, 80, 80, 0.08) !important; }
+
+/* Shimmer loading */
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(163, 255, 18, 0.05), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+}
+.typing-indicator span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #A3FF12;
+  animation: typing 1.4s infinite both;
+}
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+  0% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0.3; transform: scale(0.8); }
+}
+
+/* DotField override colors */
+.dot-field-container canvas {
+  filter: hue-rotate(60deg) saturate(1.5);
+}
+
+/* Markdown prose in terminal */
+.prose-terminal h1 { color: #A3FF12; font-size: 1rem; font-weight: 700; margin: 1rem 0 0.5rem; }
+.prose-terminal h2 { color: #A3FF12; font-size: 0.875rem; font-weight: 600; margin: 0.75rem 0 0.375rem; }
+.prose-terminal p { color: #d4d4d4; font-size: 0.8125rem; line-height: 1.6; margin-bottom: 0.5rem; }
+.prose-terminal code { 
+  background: #0A0A0A; 
+  padding: 0.125rem 0.375rem; 
+  border-radius: 3px; 
+  font-size: 0.75rem; 
+  color: #A3FF12; 
+  font-family: 'JetBrains Mono', monospace;
+  border: 1px solid #1a1a1a;
+}
+.prose-terminal pre {
+  background: #0A0A0A;
+  border: 1px solid #1a1a1a;
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+.prose-terminal pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #d4d4d4;
+}
+.prose-terminal strong { color: #fff; font-weight: 600; }
+.prose-terminal ul { list-style: none; padding: 0; margin: 0.5rem 0; }
+.prose-terminal li { color: #d4d4d4; font-size: 0.8125rem; padding: 0.125rem 0; }
+.prose-terminal li::before { content: '> '; color: #A3FF12; }
